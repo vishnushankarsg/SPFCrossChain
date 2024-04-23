@@ -1,0 +1,33 @@
+{
+  "name": "spf-crosschain",
+  "version": "1.0.0",
+  "description": "The crosschain contract implementation for SPFund",
+  "main": "ts-scripts/main.js",
+  "scripts": {
+    "main": "ts-node ./ts-scripts/main.ts",
+    "deploy": "npm run build; npm run deploySpf",
+    "deploySpf": "ts-node ./ts-scripts/main.ts --deploySpf",
+    "build": "npm install; forge build; forge remappings > remappings.txt; npm run typechain",
+    "typechain": "typechain --target ethers-v5 --out-dir ./ts-scripts/ethers-contracts ./out/**/*.json",
+    "test": "jest --config ./ts-scripts/jest.config.js",
+    "clean": "rm -rf ts-scripts/ethers-contracts; rm -rf out/;"
+  },
+  "repository": "git@github.com/vishnushankarsg/spf-crosschain.git",
+  "author": "email@vishnushankar.com",
+  "license": "MIT",
+  "dependencies": {
+    "@certusone/wormhole-sdk": "^0.10.5",
+    "@improbable-eng/grpc-web-node-http-transport": "^0.15.0",
+    "@typechain/ethers-v5": "^11.0.0",
+    "ethers": "^5",
+    "ts-node": "^10.9.1",
+    "typechain": "^8.2.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.2",
+    "@types/node": "^20.2.5",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.1.3"
+  }
+}
